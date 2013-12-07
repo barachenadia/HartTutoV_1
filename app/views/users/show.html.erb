@@ -4,5 +4,20 @@
      <%= gravatar_for @user %>
      <%= @user.name %>
 
-   
+  
 	</center>
+
+	<div class="row">
+     <div class="small-10 columns">
+    <% if @user.microposts.any? %>
+     <h4> Microposts(<%= @user.microposts.count %>)</h4>
+     <ol>
+        <%= render @microposts %>
+     </ol>
+     <center> <%= will_paginate @microposts %></center>
+    <% end -%>
+
+
+      </div>
+ </div>
+     
