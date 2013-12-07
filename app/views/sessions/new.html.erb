@@ -1,0 +1,20 @@
+<% provide(:title,"sign in") %>
+
+  
+  <div class="row">
+  	<div class="small-4 columns">
+
+	<h1>Sign in</h1>
+	<%= form_for(:session, url: sessions_path) do |f| %>
+	
+		
+		<%= f.label :email, "Email" %>
+		<%= f.text_field :email %>
+		<%= f.label :password, "Password" %>
+		<%= f.password_field :password %>
+		<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+	
+  <% end %>
+  <p> Pas encore inscrit ? <%= link_to "Sign up now!", signup_path %></p>
+  	</div>
+  </div>

@@ -1,0 +1,62 @@
+<nav style="margin-top: 9px;" class="top-bar" data-topbar="">
+
+<!-- <nav class="top-bar" data-topbar> -->
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#"><%= link_to "Sample app", root_path, id: "logo" %></a></h1>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Help", help_path %></li>
+           
+           <% if signed_in? %>
+              
+              <li><%= link_to "Users", users_path %></li>
+              
+              <li> <%= link_to "Profile", user_path(current_user) %></li>
+              
+              
+                  <li><%= link_to "Edite your Profile", edit_user_path(current_user) %></li>
+                  
+
+              </li>
+
+            <li> <%= link_to "Sign out", signout_path, :method => "delete" %> </li>  
+              
+          <% else %>
+              <li><%= link_to "Sign in", signin_path %></li>
+           <% end %>
+  </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+    </ul>
+  </section>
+</nav>
+
+
+
+
+
+
+<!-- <header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "sample app", '#', id: "logo" %>
+      <nav>
+        <ul class="nav pull-right" style="list-style : none;display: inline-block">
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header> -->
+ <!-- <ul>
+                    <li> <%= link_to "Profile", current_user  %> </li>
+                    <li> <%= link_to "Settings", '#'  %> </li>
+                    <li> <%= link_to "Sign out", signout_path, method: "delete" %> </li>
+                  </ul> -->
