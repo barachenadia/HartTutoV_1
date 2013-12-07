@@ -1,5 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :set_micropost, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user
 
   # GET /microposts
   # GET /microposts.json
@@ -21,21 +22,30 @@ class MicropostsController < ApplicationController
   def edit
   end
 
-  # POST /microposts
-  # POST /microposts.json
-  def create
-    @micropost = Micropost.new(micropost_params)
 
-    respond_to do |format|
-      if @micropost.save
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @micropost }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @micropost.errors, status: :unprocessable_entity }
-      end
+def create
+    @micropost = current_user.microposts.build(micropost_params)
+    if @micropost.save
+      flash[:success] = "Micropost created!"
+      redirect_to root_url
+    else
+      render 'static_pages/home'
     end
   end
+  # POST /microposts
+  # POST /microposts.json
+  #def create
+   # @micropost = Micropost.new(micropost_params)
+    #respond_to do |format|
+     # if @micropost.save
+      #  format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
+       # format.json { render action: 'show', status: :created, location: @micropost }
+      #else
+       # format.html { render action: 'new' }
+        #format.json { render json: @micropost.errors, status: :unprocessable_entity }
+      #end
+    #end
+  #end
 
   # PATCH/PUT /microposts/1
   # PATCH/PUT /microposts/1.json

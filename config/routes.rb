@@ -14,7 +14,7 @@ TutoApp::Application.routes.draw do
   match '/signin', :to => 'sessions#new', :via => 'get'
   match '/signout', :to => 'sessions#destroy', :via => 'get'
 
-  resources :microposts
+  resources :microposts , only: [:create, :destroy]
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]

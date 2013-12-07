@@ -1,14 +1,16 @@
+<% provide(:title, @user.name) %>
 
-<center style="margin-top: 30px; margin-right: 1000px;">
-	 <% provide(:title, @user.name) %>
+<div class="row">
+	<div class="small-5 columns" style = "margin-top : 20px"> 
+
      <%= gravatar_for @user %>
      <%= @user.name %>
 
-  
-	</center>
-
-	<div class="row">
-     <div class="small-10 columns">
+  <!-- <center style="margin-top: 30px; margin-right: 1000px;">
+	</center> -->
+</div>
+	
+     <div class="small-9 columns">
     <% if @user.microposts.any? %>
      <h4> Microposts(<%= @user.microposts.count %>)</h4>
      <ol>
