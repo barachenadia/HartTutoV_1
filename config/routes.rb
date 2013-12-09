@@ -6,6 +6,7 @@ TutoApp::Application.routes.draw do
   get "static_pages/contact"
   get "sessions/new"
   get "sessions/destroy"
+  get "/micropost/destroy"
   
   match '/help',    :to => 'static_pages#help',    :via => 'get'
   match '/about',   :to => 'static_pages#about',   :via => 'get'
@@ -13,7 +14,7 @@ TutoApp::Application.routes.draw do
   match '/signup',  :to =>'users#new',       :via =>'get'
   match '/signin', :to => 'sessions#new', :via => 'get'
   match '/signout', :to => 'sessions#destroy', :via => 'get'
-
+  match '/microposts/:id', :to => 'microposts#destroy', :via => 'get'
   resources :microposts , only: [:create, :destroy]
 
   resources :users
